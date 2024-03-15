@@ -1,12 +1,32 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import "./App.css";
+import PersonalInformation from "./components/PersonalInfo";
+import "./index.css";
+
+const initialPersonalInfo = {
+  name: "John Doe",
+  number: "9999999",
+  email: "johndoe@somedomain.com",
+  address: "Somewhere on earth",
+  about: "Something about you",
+};
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [personalInfo, setPersonalInfo] = useState(initialPersonalInfo);
 
-  return <></>;
+  const changePersonalInfo = (e) =>
+    setPersonalInfo({ ...personalInfo, [e.target.id]: e.target.value });
+
+  return (
+    <>
+      <main>
+        <section className="application-form">
+          <PersonalInformation personalInfo={personalInfo} onChange={changePersonalInfo} />
+        </section>
+        <section className="preview"></section>
+      </main>
+      <footer></footer>
+    </>
+  );
 }
 
 export default App;
