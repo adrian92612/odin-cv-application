@@ -13,8 +13,17 @@
   border: 1px solid red;
 }
 
+main {
+  display: grid;
+  grid-template-columns: 1fr 2.5fr;
+}
+
 .application-form {
   display: flex;
   flex-direction: column;
   border: 2px solid black;
+}
+
+.preview {
+  border: 1px solid blue;
 }
