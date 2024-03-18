@@ -22,8 +22,24 @@ main {
   display: flex;
   flex-direction: column;
   border: 2px solid black;
+  padding: 20px;
+  gap: 20px;
 }
 
 .preview {
   border: 1px solid blue;
+  padding: 20px;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.2rem;
+  font-weight: bolder;
+}
+
+input {
+  padding: 5px 10px;
+  border: none;
+  border-bottom: 2px solid black;
 }

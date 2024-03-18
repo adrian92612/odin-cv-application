@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import PersonalInformation from "./components/PersonalInfo";
-import EducationInfo from "./components/EducationInfo";
-import Preview from "./components/Preview";
+import { EducationInfo, WorkInfo } from "./components/EducationInfo";
+import { PreviewPersonal, PreviewEducation, PreviewWork } from "./components/Preview";
 import "./index.css";
 
 const initialPersonalInfo = {
@@ -13,17 +13,25 @@ const initialPersonalInfo = {
   about: "Something about you",
 };
 
-let educId = 0;
+let ids = 0;
 const initialEducationInfo = {
-  id: educId,
+  id: ids,
   schoolName: "Some University",
   course: "Some course",
   date: "June 1999 - March 2003",
 };
 
+const initialWorkInfo = {
+  id: ids,
+  employer: "Some Company",
+  position: "Some Position",
+  date: "January 2010 - Present",
+};
+
 function App() {
   const [personalInfo, setPersonalInfo] = useState(initialPersonalInfo);
   const [educationInfo, setEducationInfo] = useState([]);
+  const [workInfo, setWorkInfo] = useState([]);
 
   const changePersonalInfo = (e, data) => {
     setPersonalInfo({ ...personalInfo, [data]: e.target.value });
@@ -42,24 +50,49 @@ function App() {
     setEducationInfo(educationInfo.filter((info) => info.id !== infoId));
   };
 
-  const addEducationInfo = () => {
-    setEducationInfo([...educationInfo, { ...initialEducationInfo, id: educId++ }]);
+  const changeWorkInfo = (e, data, infoId) => {
+    return setWorkInfo(
+      workInfo.map((info) => {
+        if (info.id === infoId) return { ...info, [data]: e.target.value };
+        return info;
+      })
+    );
+  };
+  const removeWorkInfo = (infoId) => {
+    setWorkInfo(workInfo.filter((info) => info.id !== infoId));
+  };
+
+  const addInfo = (info, setInfo, initialInfo) => {
+    setInfo([...info, { ...initialInfo, id: ids++ }]);
   };
 
   return (
     <>
       <main>
         <section className="application-form">
+          <h2>Personal</h2>
           <PersonalInformation personalInfo={personalInfo} onChange={changePersonalInfo} />
+
+          <h2>Education</h2>
           <EducationInfo
             educInfo={educationInfo}
             onChange={changeEducationInfo}
             onRemove={removeEducationInfo}
           />
-          <button onClick={addEducationInfo}>Add Education</button>
+          <button onClick={() => addInfo(educationInfo, setEducationInfo, initialEducationInfo)}>
+            Add Education
+          </button>
+
+          <h2>Work</h2>
+          <WorkInfo workInfo={workInfo} onChange={changeWorkInfo} onRemove={removeWorkInfo} />
+          <button onClick={() => addInfo(workInfo, setWorkInfo, initialWorkInfo)}>
+            Add Work Experience
+          </button>
         </section>
         <section className="preview">
-          <Preview personalInfo={personalInfo} />
+          <PreviewPersonal personalInfo={personalInfo} />
+          <PreviewEducation educationInfo={educationInfo} />
+          <PreviewWork workInfo={workInfo} />
         </section>
       </main>
       <footer></footer>

@@ -1,17 +1,18 @@
 function Input({ title, value, onChange }) {
   return (
     <>
-      <label>{title}</label>
-      <input value={value} onChange={onChange} />
+      <label>
+        {title}
+        <input value={value} onChange={onChange} />
+      </label>
     </>
   );
 }
 
-export default function EducationInfo({ educInfo, onChange, onRemove }) {
+function EducationInfo({ educInfo, onChange, onRemove }) {
   return (
     <>
       {educInfo.map((info) => {
-        console.log(info.id);
         return (
           <div key={info.id}>
             <Input
@@ -36,3 +37,34 @@ export default function EducationInfo({ educInfo, onChange, onRemove }) {
     </>
   );
 }
+
+function WorkInfo({ workInfo, onChange, onRemove }) {
+  return (
+    <>
+      {workInfo.map((info) => {
+        return (
+          <div key={info.id}>
+            <Input
+              title="Employer Name"
+              value={info.employer}
+              onChange={(e) => onChange(e, "employer", info.id)}
+            />
+            <Input
+              title="Position"
+              value={info.position}
+              onChange={(e) => onChange(e, "position", info.id)}
+            />
+            <Input
+              title="Date Employed"
+              value={info.date}
+              onChange={(e) => onChange(e, "date", info.id)}
+            />
+            <button onClick={() => onRemove(info.id)}>Remove</button>
+          </div>
+        );
+      })}
+    </>
+  );
+}
+
+export { EducationInfo, WorkInfo };
