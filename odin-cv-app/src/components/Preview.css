@@ -6,8 +6,7 @@
   gap: 20px;
   align-items: center;
   justify-content: center;
-  /* padding: 20px; */
-  margin: 20px;
+  margin-bottom: 20px;
 }
 
 .name {
@@ -40,14 +39,19 @@
 .preview-education > h2,
 .preview-work > h2 {
   font-size: 1.2rem;
-  font-weight: 200;
-  padding-left: 10%;
+  font-weight: 400;
   background-color: var(--green);
-  margin: 0 20px;
+  width: 80%;
+  text-align: center;
+  margin: 0 auto;
   margin-bottom: 20px;
+  padding: 10px 0;
+  border-radius: 5px;
 }
 .details {
-  padding: 20px;
+  font-size: 1.2rem;
+  padding-left: 10%;
+  margin-bottom: 10px;
 }
 
 .org-name {
