@@ -43,12 +43,23 @@ main {
   overflow: auto;
 }
 
-.preview {
+#preview {
   box-shadow: 0 5px 10px var(--black);
   background-color: var(--white);
   display: flex;
   flex-direction: column;
   align-self: flex-start;
+  padding-bottom: 30px;
+  position: relative;
+}
+
+.download-btn {
+  position: absolute;
+  transform: translateY(-150%);
+  border: none;
+  border-radius: 20px;
+  background-color: var(--green);
+  padding: 5px 10px;
 }
 
 label {

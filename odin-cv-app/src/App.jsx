@@ -6,25 +6,25 @@ import { PreviewPersonal, PreviewEducation, PreviewWork } from "./components/Pre
 import "./index.css";
 
 const initialPersonalInfo = {
-  name: "John Doe",
-  number: "9999999",
-  email: "johndoe@somedomain.com",
-  address: "Somewhere on earth",
+  name: "",
+  number: "",
+  email: "",
+  address: "",
 };
 
 let ids = 0;
 const initialEducationInfo = {
   id: ids,
-  schoolName: "Some University",
-  course: "Some course",
-  date: "June 1999 - March 2003",
+  schoolName: "",
+  course: "",
+  date: "",
 };
 
 const initialWorkInfo = {
   id: ids,
-  employer: "Some Company",
-  position: "Some Position",
-  date: "January 2010 - Present",
+  employer: "",
+  position: "",
+  date: "",
 };
 
 function App() {
@@ -65,6 +65,11 @@ function App() {
     setInfo([...info, { ...initialInfo, id: ids++ }]);
   };
 
+  const downloadPDF = () => {
+    const cv = document.querySelector("#preview");
+    html2pdf(cv);
+  };
+
   return (
     <>
       <main>
@@ -99,7 +104,10 @@ function App() {
             Add Work Experience
           </button>
         </section>
-        <section className="preview">
+        <section id="preview">
+          <button className="download-btn" onClick={downloadPDF}>
+            Download CV
+          </button>
           <PreviewPersonal personalInfo={personalInfo} />
           <PreviewEducation educationInfo={educationInfo} />
           <PreviewWork workInfo={workInfo} />
