@@ -1,2 +1,55 @@
 .preview-personal {
+  background-color: var(--green);
+  min-height: 150px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  /* padding: 20px; */
+  margin: 20px;
+}
+
+.name {
+  width: 100%;
+  text-align: center;
+  border-bottom: 2px solid var(--white);
+  font-size: 3rem;
+}
+
+.contact-details {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.contact-details > p {
+  display: flex;
+  font-size: 1.2rem;
+  justify-content: center;
+  align-content: center;
+  gap: 5px;
+  overflow-wrap: break-all;
+  word-wrap: break-all;
+}
+
+.contact-details img {
+  width: 20px;
+}
+
+.preview-education > h2,
+.preview-work > h2 {
+  font-size: 1.2rem;
+  font-weight: 200;
+  padding-left: 10%;
+  background-color: var(--green);
+  margin: 0 20px;
+  margin-bottom: 20px;
+}
+.details {
+  padding: 20px;
+}
+
+.org-name {
+  font-weight: bolder;
 }

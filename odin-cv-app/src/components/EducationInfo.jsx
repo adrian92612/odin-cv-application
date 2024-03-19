@@ -14,7 +14,7 @@ function EducationInfo({ educInfo, onChange, onRemove }) {
     <>
       {educInfo.map((info) => {
         return (
-          <div key={info.id}>
+          <div className="contents" key={info.id}>
             <Input
               title="School Name"
               value={info.schoolName}
@@ -30,7 +30,9 @@ function EducationInfo({ educInfo, onChange, onRemove }) {
               value={info.date}
               onChange={(e) => onChange(e, "date", info.id)}
             />
-            <button onClick={() => onRemove(info.id)}>Remove</button>
+            <button className="remove-btn" onClick={() => onRemove(info.id)}>
+              Remove
+            </button>
           </div>
         );
       })}
@@ -43,7 +45,7 @@ function WorkInfo({ workInfo, onChange, onRemove }) {
     <>
       {workInfo.map((info) => {
         return (
-          <div key={info.id}>
+          <div className="contents" key={info.id}>
             <Input
               title="Employer Name"
               value={info.employer}
@@ -59,7 +61,9 @@ function WorkInfo({ workInfo, onChange, onRemove }) {
               value={info.date}
               onChange={(e) => onChange(e, "date", info.id)}
             />
-            <button onClick={() => onRemove(info.id)}>Remove</button>
+            <button className="remove-btn" onClick={() => onRemove(info.id)}>
+              Remove
+            </button>
           </div>
         );
       })}

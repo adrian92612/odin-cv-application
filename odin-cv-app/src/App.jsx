@@ -10,7 +10,6 @@ const initialPersonalInfo = {
   number: "9999999",
   email: "johndoe@somedomain.com",
   address: "Somewhere on earth",
-  about: "Something about you",
 };
 
 let ids = 0;
@@ -71,21 +70,32 @@ function App() {
       <main>
         <section className="application-form">
           <h2>Personal</h2>
-          <PersonalInformation personalInfo={personalInfo} onChange={changePersonalInfo} />
+          <div className="personal">
+            <PersonalInformation personalInfo={personalInfo} onChange={changePersonalInfo} />
+          </div>
 
           <h2>Education</h2>
-          <EducationInfo
-            educInfo={educationInfo}
-            onChange={changeEducationInfo}
-            onRemove={removeEducationInfo}
-          />
-          <button onClick={() => addInfo(educationInfo, setEducationInfo, initialEducationInfo)}>
+          <div className="container">
+            <EducationInfo
+              educInfo={educationInfo}
+              onChange={changeEducationInfo}
+              onRemove={removeEducationInfo}
+            />
+          </div>
+          <button
+            className="add-btn"
+            onClick={() => addInfo(educationInfo, setEducationInfo, initialEducationInfo)}
+          >
             Add Education
           </button>
-
           <h2>Work</h2>
-          <WorkInfo workInfo={workInfo} onChange={changeWorkInfo} onRemove={removeWorkInfo} />
-          <button onClick={() => addInfo(workInfo, setWorkInfo, initialWorkInfo)}>
+          <div className="container">
+            <WorkInfo workInfo={workInfo} onChange={changeWorkInfo} onRemove={removeWorkInfo} />
+          </div>
+          <button
+            className="add-btn"
+            onClick={() => addInfo(workInfo, setWorkInfo, initialWorkInfo)}
+          >
             Add Work Experience
           </button>
         </section>

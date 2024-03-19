@@ -8,7 +8,6 @@ export default function PersonalInformation({ personalInfo, onChange }) {
       <Input title="Number" value={personalInfo.number} data="number" onChange={onChange} />
       <Input title="Email Address" value={personalInfo.email} data="email" onChange={onChange} />
       <Input title="Address" value={personalInfo.address} data="address" onChange={onChange} />
-      <Input title="About" value={personalInfo.about} data="about" onChange={onChange} />
     </form>
   );
 }
